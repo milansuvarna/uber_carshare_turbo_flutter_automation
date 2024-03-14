@@ -1,0 +1,11 @@
+name: 'Set up Ruby and gems'
+
+runs:
+  using: 'composite'
+
+  steps:
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1.172.0
+      with:
+        bundler-cache: true
+        ruby-version: '3.3.0'

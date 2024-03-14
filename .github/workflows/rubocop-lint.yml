@@ -1,0 +1,19 @@
+name: RuboCop Lint
+on:
+  pull_request:
+
+jobs:
+  rubocop:
+    permissions: read-all
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4.1.1
+
+      - name: Set up Ruby and gems
+        uses: ./.github/actions/ruby
+
+      - name: 'Run RuboCop'
+        run: bundle exec rubocop
