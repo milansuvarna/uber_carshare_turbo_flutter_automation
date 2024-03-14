@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UcsPage
   include ::Appium::Flutter::Finder
 
@@ -9,8 +11,8 @@ class UcsPage
   def initialize_elements
     @sydney_timezone = TZInfo::Timezone.get('Australia/Sydney')
     @current_date_in_sydney = Time.now.getlocal(@sydney_timezone.current_period.utc_total_offset).strftime('%d').to_i
-    @time_out = 30000
-    @time_out_in_second = @time_out/1000
+    @time_out = 30_000
+    @time_out_in_second = @time_out / 1000
     @time_out_set_frame_sync = 5000
 
     # by_value_key
@@ -27,12 +29,12 @@ class UcsPage
     # by_text
     @trips_tab = element_with_text('Trips')
     @login_with_email_button = element_with_text('Log in')
-    @search_bar  = element_with_text('City, hotel or address')
+    @search_bar = element_with_text('City, hotel or address')
     @current_location_text = element_with_text('Current location')
     @sydney_text = element_with_text('Sydney')
     @add_dates_button = element_with_text('Add dates')
-    @pickup_date = element_with_text("#{@current_date_in_sydney}")
-    @return_date = element_with_text("#{@current_date_in_sydney + 3}")
+    @pickup_date = element_with_text(@current_date_in_sydney.to_s)
+    @return_date = element_with_text((@current_date_in_sydney + 3).to_s)
     @confirm_dates_button = element_with_text('Confirm dates')
     @confirm_time_button = element_with_text('Confirm time')
     @nice_find_text = element_with_text('Nice find! This car is available. ')
@@ -61,38 +63,32 @@ class UcsPage
   end
 
   def click_element(element)
-    begin
-      @driver.execute_script('flutter:waitFor', element, @time_out)
-      element.click
-    rescue Exception => e
-      puts "Element did not appear within #{@time_out_in_second} seconds."
-      raise e
-    end
+    @driver.execute_script('flutter:waitFor', element, @time_out)
+    element.click
+  rescue StandardError => e
+    puts "Element did not appear within #{@time_out_in_second} seconds."
+    raise e
   end
 
-  def enter_text(element,text)
-    begin
-      @driver.execute_script('flutter:waitFor', element, @time_out)
-      element.send_keys(text)
-    rescue Exception => e
-      puts "Element did not appear within #{@time_out_in_second} seconds."
-      raise e
-    end
+  def enter_text(element, text)
+    @driver.execute_script('flutter:waitFor', element, @time_out)
+    element.send_keys(text)
+  rescue StandardError => e
+    puts "Element did not appear within #{@time_out_in_second} seconds."
+    raise e
   end
 
   def value_from_element(element)
-    begin
-      @driver.execute_script('flutter:waitFor', element, @time_out)
-      element.text
-    rescue Exception => e
-      puts "Element did not appear within #{@time_out_in_second} seconds."
-      raise e
-    end
+    @driver.execute_script('flutter:waitFor', element, @time_out)
+    element.text
+  rescue StandardError => e
+    puts "Element did not appear within #{@time_out_in_second} seconds."
+    raise e
   end
 
   def login_with_credentials(credentials)
-    enter_text(@email_field,credentials)
-    enter_text(@password_field,credentials)
+    enter_text(@email_field, credentials)
+    enter_text(@password_field, credentials)
     click_element(@login_with_email_button)
   end
 
@@ -106,7 +102,8 @@ class UcsPage
 
   def select_a_car
     click_element(@car_listing_large)
-    @driver.execute_script('flutter:scrollUntilVisible', @custom_scroll_view, { item: @nice_find_text, dxScroll: 90, dyScroll: -400 })
+    @driver.execute_script('flutter:scrollUntilVisible', @custom_scroll_view,
+                           { item: @nice_find_text, dxScroll: 90, dyScroll: -400 })
   end
 
   def confirm_booking
@@ -115,11 +112,13 @@ class UcsPage
   end
 
   def book_now
-    @driver.execute_script('flutter:scrollUntilVisible', @listview, { item: @book_now_button, dxScroll: 90, dyScroll: -400 })
+    @driver.execute_script('flutter:scrollUntilVisible', @listview,
+                           { item: @book_now_button, dxScroll: 90, dyScroll: -400 })
   end
 
   def navigate_to_sydney
-    @driver.execute_script('flutter:scrollUntilVisible', @listview, { item: @sydney_text, dxScroll: 90, dyScroll: -400 })
+    @driver.execute_script('flutter:scrollUntilVisible', @listview,
+                           { item: @sydney_text, dxScroll: 90, dyScroll: -400 })
     click_element(@sydney_text)
   end
 
@@ -163,5 +162,4 @@ class UcsPage
   def verify_email
     value_from_element(@email_text)
   end
-
 end

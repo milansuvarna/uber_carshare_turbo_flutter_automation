@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'fileutils'
 
 task :rspec do
@@ -16,5 +18,5 @@ task :clean_folder do
   folder_report_allure = "#{Dir.pwd}/report"
   folder_report_minitest = "#{Dir.pwd}/test"
   FileUtils.rm_rf(Dir.glob("#{folder_report_allure}/*"))
-  FileUtils.rm_rf(Dir.glob("#{folder_report_minitest}"))
+  FileUtils.rm_rf(Dir.glob(folder_report_minitest.to_s))
 end

@@ -1,25 +1,26 @@
+# frozen_string_literal: true
+
 require 'allure-rspec'
 require 'appium_flutter_finder'
 require 'tzinfo'
 
 RSpec.configure do |config|
-  config.include ::Appium::Flutter::Finder
+  config.include Appium::Flutter::Finder
 
   # Configure test timeouts
-  config.around(:each) do |example|
+  config.around do |example|
     max_test_duration = 60
 
     Timeout.timeout(max_test_duration) do
       example.run
     end
-
   rescue Timeout::Error => e
-    puts "Test took too long. Closing the app..."
+    puts 'Test took too long. Closing the app...'
     raise e
   end
 
   # Set up Appium driver before each test
-  config.before(:each) do
+  config.before do
     caps = {
       caps: {
         platformName: 'Android',
@@ -31,7 +32,7 @@ RSpec.configure do |config|
       }
     }
 
-    @core = ::Appium::Core.for(caps)
+    @core = Appium::Core.for(caps)
     @driver = @core.start_driver
     @driver.context = 'FLUTTER'
   end
@@ -65,5 +66,4 @@ RSpec.configure do |config|
     c.clean_results_directory = true
     c.logging_level = Logger::DEBUG
   end
-
 end
