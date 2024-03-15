@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 require_relative '../spec/usc_page'
+require_relative '../conf/appium_config'
 
 describe 'UCS Test', :allure do
-  let(:ucs_page) { UcsPage.new(@driver) }
+  let(:ucs_page) { UcsPage.new }
 
   it 'Booking Flow' do |e|
     e.run_step('Login with credentials') do

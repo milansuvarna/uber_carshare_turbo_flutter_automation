@@ -1,0 +1,7 @@
+android:
+  platformName: "Android"
+  automationName: "flutter"
+  udid: "emulator-5554"
+  deviceName: "Android"
+  autoGrantPermissions: "true"
+  app: "test.apk"

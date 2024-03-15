@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+require 'tzinfo'
+
 class UcsPage
   include ::Appium::Flutter::Finder
 
-  def initialize(driver)
-    @driver = driver
+  def initialize
+    @driver = AppiumConfig.driver
     initialize_elements
   end
 
