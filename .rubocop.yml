@@ -16,3 +16,6 @@ require:
 
 AllCops:
   NewCops: enable
+
+RSpec/DescribeClass:
+  Enabled: false
