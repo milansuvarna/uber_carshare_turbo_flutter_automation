@@ -8,4 +8,9 @@ class TestSetup < BaseApi
   def create_user
     post('api/v2/test_setup/members?type=cypress_borrower')
   end
+
+  # list a new vehicle via API
+  def list_new_vehicle
+    post('api/v2/test_setup/cars?type=online_vehicle')
+  end
 end

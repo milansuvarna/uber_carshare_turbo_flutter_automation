@@ -19,3 +19,6 @@ AllCops:
 
 RSpec/DescribeClass:
   Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
