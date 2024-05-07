@@ -4,6 +4,7 @@ require_relative '../conf/appium_config'
 require_relative '../pages/api/test_setup'
 require_relative '../pages/login_page'
 require_relative '../pages/home_page'
+require_relative '../pages/trip_date_time_page'
 
 PASSWORD = '12345678'
 ADDRESS = '55 Pyrmont Bridge Rd, Pyrmont NSW 2009, AU'
@@ -18,6 +19,7 @@ describe 'Sanity Test', :allure do
   let(:vehicle_name) { vehicle['name'] }
   let(:password) { PASSWORD }
   let(:home_page) { HomePage.new }
+  let(:trip_date_time_page) { TripDateTimePage.new }
 
   it 'Verify user should be able to create a booking' do |e|
     e.run_step('Login with verified user') do
@@ -30,5 +32,13 @@ describe 'Sanity Test', :allure do
       home_page.verify_home_page
       home_page.search_location(ADDRESS)
     end
+
+    e.run_step('Select dates') do
+      expect(trip_date_time_page.pickup_and_return_title).to match('Pickup and return')
+      trip_date_time_page.select_dates(7, 10)
+      trip_date_time_page.select_default_time
+      sleep(10)
+    end
+
   end
 end
