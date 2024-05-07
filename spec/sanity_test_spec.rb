@@ -11,9 +11,11 @@ ADDRESS = '55 Pyrmont Bridge Rd, Pyrmont NSW 2009, AU'
 describe 'Sanity Test', :allure do
   let(:login_page) { LoginPage.new }
   let(:api) { TestSetup.new }
-  let(:email) { api.create_user['email'] }
-  let(:vehicle_id) { api.list_new_vehicle['id'] }
-  let(:vehicle_name) { api.list_new_vehicle['name'] }
+  let(:user) { api.create_user }
+  let(:email) { user['email'] }
+  let(:vehicle) { api.list_new_vehicle }
+  let(:vehicle_id) { vehicle['id'] }
+  let(:vehicle_name) { vehicle['name'] }
   let(:password) { PASSWORD }
   let(:home_page) { HomePage.new }
 
