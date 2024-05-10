@@ -1,7 +1,6 @@
-Flutter v3.7.0
-Appium v2.0
-Flutter driver v2.2.4
-Ruby-3.3.0
 
+Documentation
 
-sample apk : https://drive.google.com/file/d/1ozNdVWMon1he2JxzPs7kbPKPoUkq7rxN/view?usp=sharing
+https://carnextdoor.atlassian.net/wiki/spaces/TUR/pages/2764832769/Flutter+App+Automation
+
+sample apk : https://drive.google.com/drive/folders/1bhJodN1qqO7C8HYhKt8VoL86h0SrMEwY?usp=sharing
