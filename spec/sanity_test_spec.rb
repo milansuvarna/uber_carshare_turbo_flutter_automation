@@ -38,6 +38,5 @@ describe 'Sanity Test', :allure do
       trip_date_time_page.select_dates_today_and_tomorrow
       trip_date_time_page.select_default_time
     end
-
   end
 end

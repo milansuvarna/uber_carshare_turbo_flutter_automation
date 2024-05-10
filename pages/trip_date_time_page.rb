@@ -13,13 +13,13 @@ class TripDateTimePage < BasePage
 
   def select_dates_today_and_tomorrow
     today = Date.today
-    australian_today_date = today.strftime("%d")
+    australian_today_date = today.strftime('%d')
 
     tomorrow = today + 1
     if tomorrow.month != today.month
       tomorrow = Date.new(tomorrow.year, tomorrow.month, 1) # Set tomorrow to the first day of the next month
     end
-    australia_tomorrow_date = tomorrow.strftime("%d")
+    australia_tomorrow_date = tomorrow.strftime('%d')
 
     # Remove leading zero if present
     australia_tomorrow_date.sub!(/^0/, '') if australia_tomorrow_date.start_with?('0')
@@ -30,7 +30,7 @@ class TripDateTimePage < BasePage
   end
 
   def select_default_time
-    verify_element_visible(:by_text,WHAT_TIME_SUITS_YOU_TEXT)
+    verify_element_visible(:by_text, WHAT_TIME_SUITS_YOU_TEXT)
     click_element(:by_text, CONFIRM_TIME_TEXT)
   end
 end
