@@ -35,9 +35,8 @@ describe 'Sanity Test', :allure do
 
     e.run_step('Select dates') do
       expect(trip_date_time_page.pickup_and_return_title).to match('Pickup and return')
-      trip_date_time_page.select_dates(7, 10)
+      trip_date_time_page.select_dates_today_and_tomorrow
       trip_date_time_page.select_default_time
-      sleep(10)
     end
 
   end
