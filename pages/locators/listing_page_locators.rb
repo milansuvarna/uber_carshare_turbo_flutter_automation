@@ -1,0 +1,25 @@
+# frozen_string_literal: true
+
+module ListingPageLocators
+  LISTING_PAGE_SCROLL_VIEW = 'CustomScrollView'
+  CAR_LISTING_ITEM = 'CarListingLarge'
+  SEARCH_BAR = 'City, hotel or address'
+  CURRENT_LOCATION_TEXT = 'Current location'
+  APP_CHIP = 'AppChip'
+  ADDRESS_CHIP = 'addressChip'
+  TEXT_TYPE = 'Text'
+  PRICE_FILTER_TEXT = 'Price'
+  CAR_TYPE_FILTER_TEXT = 'Car type'
+  FEATURES_FILTER_TEXT = 'Features'
+  SAFETY_AND_TECH_FILTER_TEXT = 'Safety & tech'
+  VEHICLE_IMAGE = 'ExtendedImage'
+  INSTANT_KEYS_TEXT = 'Instant Keys'
+  KEY_HANDOVER_TEXT = 'Key Handover'
+  LIKE_ICON = 'LikeIcon'
+  LIKE_BUTTON = 'LikeButton'
+  MAP_ICON = 'Map'
+  VEHICLE_PROTECTION_APP_BANNER = 'vehicleProtectionAppBanner'
+  REFUEL_APP_BANNER = 'refuelAppBanner'
+  FIRST_RESULT_LISTING_PAGE = 'firstTile'
+  CAR_LIST_ARRAY = 'SearchPageBody'
+end

@@ -134,7 +134,6 @@ class BasePage
 
   # Methods for scrolling and retrieving values:
   def scroll_down_to_element(listview, element_type, element_value)
-    wait_for_element(find_element(element_type, element_value))
     @driver.execute_script(
       'flutter:scrollUntilVisible',
       find_element(:by_type, listview),
