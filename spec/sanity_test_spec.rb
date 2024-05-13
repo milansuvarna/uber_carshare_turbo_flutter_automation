@@ -5,9 +5,11 @@ require_relative '../pages/api/test_setup'
 require_relative '../pages/login_page'
 require_relative '../pages/home_page'
 require_relative '../pages/trip_date_time_page'
+require_relative '../pages/listing_page'
 
 PASSWORD = '12345678'
 ADDRESS = '55 Pyrmont Bridge Rd, Pyrmont NSW 2009, AU'
+STREET = '55 Pyrmont Bridge Rd'
 
 describe 'Sanity Test', :allure do
   let(:login_page) { LoginPage.new }
@@ -20,6 +22,7 @@ describe 'Sanity Test', :allure do
   let(:password) { PASSWORD }
   let(:home_page) { HomePage.new }
   let(:trip_date_time_page) { TripDateTimePage.new }
+  let(:listing_page) { ListingPage.new }
 
   it 'Verify user should be able to create a booking' do |e|
     e.run_step('Login with verified user') do
@@ -37,6 +40,13 @@ describe 'Sanity Test', :allure do
       expect(trip_date_time_page.pickup_and_return_title).to match('Pickup and return')
       trip_date_time_page.select_dates_today_and_tomorrow
       trip_date_time_page.select_default_time
+    end
+
+    e.run_step('Select vehicle') do
+      listing_page.verify_listing_page
+      expect(listing_page.vehicle_address(STREET)).to include(STREET)
+      listing_page.click_first_result
+      sleep 10
     end
   end
 end
