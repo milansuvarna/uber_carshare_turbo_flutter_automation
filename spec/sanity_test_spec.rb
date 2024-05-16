@@ -6,6 +6,7 @@ require_relative '../pages/login_page'
 require_relative '../pages/home_page'
 require_relative '../pages/trip_date_time_page'
 require_relative '../pages/listing_page'
+require_relative '../pages/vehicle_details_page'
 
 PASSWORD = '12345678'
 ADDRESS = '55 Pyrmont Bridge Rd, Pyrmont NSW 2009, AU'
@@ -23,6 +24,7 @@ describe 'Sanity Test', :allure do
   let(:home_page) { HomePage.new }
   let(:trip_date_time_page) { TripDateTimePage.new }
   let(:listing_page) { ListingPage.new }
+  let(:vehicle_details_page) { VehicleDetailsPage.new }
 
   it 'Verify user should be able to create a booking' do |e|
     e.run_step('Login with verified user') do
@@ -46,6 +48,7 @@ describe 'Sanity Test', :allure do
       listing_page.verify_listing_page
       expect(listing_page.vehicle_address(STREET)).to include(STREET)
       listing_page.click_first_result
+      vehicle_details_page.verify_element_vehicle_details_page
       sleep 10
     end
   end
