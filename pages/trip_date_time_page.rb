@@ -12,20 +12,19 @@ class TripDateTimePage < BasePage
   end
 
   def select_dates_today_and_tomorrow
-    today = Date.today
-    australian_today_date = today.strftime('%d')
+    # Get the current date in the Australia/Sydney timezone
+    start_date = sydney_date_today
+    next_day = start_date + 1
 
-    tomorrow = today + 1
-    if tomorrow.month != today.month
-      tomorrow = Date.new(tomorrow.year, tomorrow.month, 1) # Set tomorrow to the first day of the next month
-    end
-    australia_tomorrow_date = tomorrow.strftime('%d')
+    # Determine if tomorrow is in the same month, else set it to the first day of the next month
+    end_date = if next_day.month == start_date.month
+                 next_day
+               else
+                 Date.new(next_day.year, next_day.month, 1)
+               end
 
-    # Remove leading zero if present
-    australia_tomorrow_date.sub!(/^0/, '') if australia_tomorrow_date.start_with?('0')
-
-    click_element(:by_text, australian_today_date)
-    click_element(:by_text, australia_tomorrow_date)
+    click_element(:by_text, start_date.day)
+    click_element(:by_text, end_date.day)
     click_element(:by_text, CONFIRM_DATES_TEXT)
   end
 

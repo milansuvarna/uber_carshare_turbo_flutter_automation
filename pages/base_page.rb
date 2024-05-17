@@ -159,9 +159,7 @@ class BasePage
     handle_element_not_visible(matching_value, e)
   end
 
-  def time_in_australia
-    sydney_timezone = TZInfo::Timezone.get('Australia/Sydney')
-    date_now = Time.now.getlocal(sydney_timezone.current_period.utc_total_offset).strftime('%d').to_i
-    puts date_now
+  def sydney_date_today
+    Time.now.getlocal(TZInfo::Timezone.get('Australia/Sydney').current_period.utc_total_offset).to_date
   end
 end
