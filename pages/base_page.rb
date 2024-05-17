@@ -160,6 +160,6 @@ class BasePage
   end
 
   def sydney_date_today
-    Time.now.getlocal(TZInfo::Timezone.get('Australia/Sydney').current_period.utc_total_offset).to_date
+    TZInfo::Timezone.get('Australia/Sydney').now.to_date
   end
 end

@@ -34,18 +34,6 @@ class ListingPage < BasePage
     click_element_by_ancestor(:by_type, APP_CHIP, :by_text, 'Add dates')
   end
 
-  def select_a_vehicle(vehicle_name)
-    click_element(:by_text, vehicle_name)
-  end
-
-  def address_on_chip
-    get_value_from_descendant_element(:by_value_key, ADDRESS_CHIP, :by_type, TEXT_TYPE)
-  end
-
-  def click_favourite_btn
-    click_element(:by_type, APP_CHIP, :by_value_key, LIKE_BUTTON)
-  end
-
   def click_first_result
     click_element(:by_value_key, FIRST_RESULT_LISTING_PAGE)
   end

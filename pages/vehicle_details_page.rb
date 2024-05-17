@@ -30,13 +30,4 @@ class VehicleDetailsPage < BasePage
     scroll_down_to_element(CAR_DETAILS_PAGE_SCROLL_VIEW, :by_value_key, CAR_PROFILE_REVIEW_ICON_KEY)
     verify_element_visible(:by_value_key, CAR_PROFILE_REVIEW_ICON_KEY)
   end
-
-  def navigate_to_checkout_page
-    scroll_down_to_element(CAR_DETAILS_PAGE_SCROLL_VIEW, :by_text, NICE_FIND_TEXT)
-    click_element(:by_text, GO_TO_CHECKOUT_TEXT)
-  end
-
-  def verify_address_on_car_details
-    get_value(:by_text, ADDRESS_ON_CAR_DETAILS_TEXT)
-  end
 end
