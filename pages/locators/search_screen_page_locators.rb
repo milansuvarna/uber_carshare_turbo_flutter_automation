@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module ListingPageLocators
-  LISTING_PAGE_SCROLL_VIEW = 'CustomScrollView'
+module SearchScreenPageLocators
+  SEARCH_SCREEN_PAGE_SCROLL_VIEW = 'CustomScrollView'
   CAR_LISTING_ITEM = 'CarListingLarge'
   SEARCH_BAR = 'City, hotel or address'
   CURRENT_LOCATION_TEXT = 'Current location'
@@ -20,6 +20,6 @@ module ListingPageLocators
   MAP_ICON = 'Map'
   VEHICLE_PROTECTION_APP_BANNER = 'vehicleProtectionAppBanner'
   REFUEL_APP_BANNER = 'refuelAppBanner'
-  FIRST_RESULT_LISTING_PAGE = 'firstTile'
+  FIRST_RESULT_SEARCH_SCREEN_PAGE = 'firstTile'
   CAR_LIST_ARRAY = 'SearchPageBody'
 end

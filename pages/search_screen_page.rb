@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 require_relative '../pages/base_page'
-require_relative '../pages/locators/listing_page_locators'
+require_relative '../pages/locators/search_screen_page_locators'
 
 # Represents the listing page of the application
-class ListingPage < BasePage
-  include ListingPageLocators
+class SearchScreenPage < BasePage
+  include SearchScreenPageLocators
 
-  def verify_listing_page
+  def verify_search_screen_page
     verify_ancestor_element_visible(:by_text, PRICE_FILTER_TEXT, :by_type, APP_CHIP)
     verify_ancestor_element_visible(:by_text, CAR_TYPE_FILTER_TEXT, :by_type, APP_CHIP)
     verify_ancestor_element_visible(:by_text, FEATURES_FILTER_TEXT, :by_type, APP_CHIP)
@@ -17,7 +17,7 @@ class ListingPage < BasePage
     verify_element_visible(:by_value_key, LIKE_ICON)
     verify_element_visible(:by_value_key, LIKE_BUTTON)
     verify_element_visible(:by_text, MAP_ICON)
-    scroll_down_to_element(LISTING_PAGE_SCROLL_VIEW, :by_value_key, REFUEL_APP_BANNER)
+    scroll_down_to_element(SEARCH_SCREEN_PAGE_SCROLL_VIEW, :by_value_key, REFUEL_APP_BANNER)
     verify_element_visible(:by_value_key, VEHICLE_PROTECTION_APP_BANNER)
     verify_element_visible(:by_value_key, REFUEL_APP_BANNER)
   end
@@ -35,6 +35,6 @@ class ListingPage < BasePage
   end
 
   def click_first_result
-    click_element(:by_value_key, FIRST_RESULT_LISTING_PAGE)
+    click_element(:by_value_key, FIRST_RESULT_SEARCH_SCREEN_PAGE)
   end
 end

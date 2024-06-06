@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-module VehicleDetailsPageLocators
+module CarProfilePageLocators
   CAR_DETAILS_PAGE_SCROLL_VIEW = 'CustomScrollView'
   NICE_FIND_TEXT = 'Nice find! This car is available. '
   GO_TO_CHECKOUT_TEXT = 'Go to checkout'
+  CHECKOUT_PAGE_SCROLL_VIEW = 'CustomScrollView'
   GO_BACK_ICON_KEY = 'goBackIcon'
   SHARE_ICON_KEY = 'shareIcon'
   CAR_PROFILE_NAME_KEY = 'carProfileCarNameText'

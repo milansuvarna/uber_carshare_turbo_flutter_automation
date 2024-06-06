@@ -5,8 +5,10 @@ require_relative '../pages/api/test_setup'
 require_relative '../pages/login_page'
 require_relative '../pages/home_page'
 require_relative '../pages/trip_date_time_page'
-require_relative '../pages/listing_page'
-require_relative '../pages/vehicle_details_page'
+require_relative '../pages/search_screen_page'
+require_relative '../pages/car_profile_page'
+require_relative '../pages/checkout_page'
+require_relative '../pages/trip_summary_page'
 
 PASSWORD = '12345678'
 ADDRESS = '55 Pyrmont Bridge Rd, Pyrmont NSW 2009, AU'
@@ -17,14 +19,13 @@ describe 'Sanity Test', :allure do
   let(:api) { TestSetup.new }
   let(:user) { api.create_user }
   let(:email) { user['email'] }
-  let(:vehicle) { api.list_new_vehicle }
-  let(:vehicle_id) { vehicle['id'] }
-  let(:vehicle_name) { vehicle['name'] }
   let(:password) { PASSWORD }
   let(:home_page) { HomePage.new }
   let(:trip_date_time_page) { TripDateTimePage.new }
-  let(:listing_page) { ListingPage.new }
-  let(:vehicle_details_page) { VehicleDetailsPage.new }
+  let(:search_screen_page) { SearchScreenPage.new }
+  let(:car_profile_page) { CarProfilePage.new }
+  let(:checkout_page) { CheckoutPage.new }
+  let(:trip_summary_page) { TripSummaryPage.new }
 
   it 'Verify user should be able to create a booking' do |e|
     e.run_step('Login with verified user') do
@@ -45,11 +46,21 @@ describe 'Sanity Test', :allure do
     end
 
     e.run_step('Select vehicle') do
-      listing_page.verify_listing_page
-      expect(listing_page.vehicle_address(STREET)).to include(STREET)
-      listing_page.click_first_result
-      vehicle_details_page.verify_element_vehicle_details_page
+      search_screen_page.verify_search_screen_page
+      expect(search_screen_page.vehicle_address(STREET)).to include(STREET)
+      search_screen_page.click_first_result
+      car_profile_page.verify_element_car_profile_page
       sleep 10
+    end
+
+    e.run_step('Confirm booking') do
+      checkout_page.click_checkout_button
+      checkout_page.verify_checkout_page
+      checkout_page.confirm_booking
+    end
+    e.run_step('Book Now') do
+      trip_summary_page.verify_trip_summary_page
+      trip_summary_page.book_now
     end
   end
 end

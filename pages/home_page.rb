@@ -25,6 +25,5 @@ class HomePage < BasePage
     enter_text(:by_type, SEARCH_TEXT_FIELD, location)
     click_element(:by_value_key, SEARCH_ICON)
     click_element(:by_type, SEARCH_RESULT)
-    sleep(5)
   end
 end

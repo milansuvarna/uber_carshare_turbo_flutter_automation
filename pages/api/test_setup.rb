@@ -10,7 +10,7 @@ class TestSetup < BaseApi
   end
 
   # list a new vehicle via API
-  def list_new_vehicle
+  def create_vehicle
     post('api/v2/test_setup/cars?type=online_vehicle')
   end
 end

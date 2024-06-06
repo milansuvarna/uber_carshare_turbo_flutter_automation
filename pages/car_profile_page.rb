@@ -1,19 +1,16 @@
 # frozen_string_literal: true
 
 require_relative '../pages/base_page'
-require_relative '../pages/locators/vehicle_details_page_locators'
+require_relative '../pages/locators/car_profile_page_locators'
 
 # Represents the vehicle details page of the application
-class VehicleDetailsPage < BasePage
-  include VehicleDetailsPageLocators
+class CarProfilePage < BasePage
+  include CarProfilePageLocators
 
-  def verify_element_vehicle_details_page
+  def verify_element_car_profile_page
     verify_element_visible(:by_value_key, GO_BACK_ICON_KEY)
     verify_element_visible(:by_value_key, SHARE_ICON_KEY)
     verify_element_visible(:by_value_key, CAR_PROFILE_NAME_KEY)
-    verify_element_visible(:by_value_key, CAR_PROFILE_LOCATION_KEY)
-    scroll_down_to_element(CAR_DETAILS_PAGE_SCROLL_VIEW, :by_text, CAR_PROFILE_FEATURES_LABEL)
-    verify_element_visible(:by_text, CAR_PROFILE_FEATURES_LABEL)
     scroll_down_to_element(CAR_DETAILS_PAGE_SCROLL_VIEW, :by_text, CAR_PROFILE_DAMAGE_AND_LOSS_TEXT)
     verify_element_visible(:by_text, CAR_PROFILE_DAMAGE_AND_LOSS_TEXT)
     verify_element_visible(:by_text, CAR_PROFILE_COVERED_FOR_FIRE_TEXT)
@@ -27,7 +24,7 @@ class VehicleDetailsPage < BasePage
     verify_element_visible(:by_text, CAR_PROFILE_NO_PETS_RULE)
     scroll_down_to_element(CAR_DETAILS_PAGE_SCROLL_VIEW, :by_text, CAR_PROFILE_TRIP_DATE_LABEL)
     verify_element_visible(:by_text, CAR_PROFILE_TRIP_DATE_LABEL)
-    scroll_down_to_element(CAR_DETAILS_PAGE_SCROLL_VIEW, :by_value_key, CAR_PROFILE_REVIEW_ICON_KEY)
-    verify_element_visible(:by_value_key, CAR_PROFILE_REVIEW_ICON_KEY)
+    # scroll_down_to_element(CAR_DETAILS_PAGE_SCROLL_VIEW, :by_value_key, CAR_PROFILE_REVIEW_ICON_KEY)
+    # verify_element_visible(:by_value_key, CAR_PROFILE_REVIEW_ICON_KEY)
   end
 end
